@@ -8,6 +8,13 @@ import java.util.Observer;
 
 public class GameBoard extends Observable implements Observer {
 
+    public GameBoard() {
+    }
+
+    public GameBoard(List<Checker> checkers) {
+        this.checkers = checkers;
+    }
+
     private List<Checker> checkers = new ArrayList<>();
 
     public Color getCheckerColor() {
@@ -30,14 +37,6 @@ public class GameBoard extends Observable implements Observer {
 
     private char[][] board = new char[6][7];
 
-    public GameBoard(List<Checker> checkers) {
-        this.checkers = checkers;
-
-    }
-    public GameBoard() {
-
-    }
-
 
     public void addChecker(Checker checker){
         checker.add(checker);
@@ -52,9 +51,11 @@ public class GameBoard extends Observable implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        refresh();
     }
     public List<Checker> getCheckers() {
+        Checker c = new Checker();
+        checkers.add(c);
         return checkers;
     }
 

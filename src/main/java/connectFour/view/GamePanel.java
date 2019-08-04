@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Observer {
 
     public GamePanel(GameBoard board) {
         board.addObserver(this);
-
+        this.board = board;
         setVisible(true);
         setOpaque(true);
         setBackground(new Color(0,0,128));
@@ -49,11 +49,10 @@ public class GamePanel extends JPanel implements Observer {
         paintImage(g);
     }
     public void drawCenteredCircle(Graphics g) {
-
-      //  for (Checker checker: board.getCheckers()) {
+        for (Checker checker: board.getCheckers()) {
             g.setColor(Color.red);
-            g.fillOval(103, 85, 75, 75);
-       // }
+            g.fillOval((int)checker.getX(), (int)checker.getY(), (int)checker.getWidth(), (int)checker.getHeight());
+        }
     }
 
 
