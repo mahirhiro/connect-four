@@ -1,5 +1,6 @@
 package connectFour.view;
 
+import connectFour.model.Checker;
 import connectFour.model.GameBoard;
 
 import javax.imageio.ImageIO;
@@ -25,6 +26,7 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     public GamePanel() {
+
     }
 
     /* painting the background image */
@@ -43,18 +45,16 @@ public class GamePanel extends JPanel implements Observer {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        paintImage(g);
         drawCenteredCircle(g);
+        paintImage(g);
     }
     public void drawCenteredCircle(Graphics g) {
 
-        g.setColor(board.getCheckerColor());
-        g.fillOval(100,100,50,50);
-
+      //  for (Checker checker: board.getCheckers()) {
+            g.setColor(Color.red);
+            g.fillOval(103, 85, 75, 75);
+       // }
     }
-
-
-
 
 
     @Override

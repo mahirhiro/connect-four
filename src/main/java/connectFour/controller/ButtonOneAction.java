@@ -1,5 +1,6 @@
 package connectFour.controller;
 
+import connectFour.model.Checker;
 import connectFour.model.GameBoard;
 
 import javax.swing.*;
@@ -27,5 +28,7 @@ public class ButtonOneAction extends AbstractAction implements Observer {
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 1");
         //board.setCheckerColor(Color.red);
+        Checker checker = new Checker();
+        board.addChecker(checker);
     }
 }

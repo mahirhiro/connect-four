@@ -1,5 +1,6 @@
 package connectFour.view;
 
+import connectFour.model.Checker;
 import connectFour.model.GameBoard;
 import connectFour.view.buttons.*;
 
@@ -13,7 +14,7 @@ public class GameFrame extends JFrame{
         JToolBar jtb = new JToolBar();
         jtb.setFloatable(false);
         jtb.setRollover(true);
-
+        Checker checker = new Checker();
         GameBoard board = new GameBoard();
         GamePanel panel = new GamePanel(board);
 
