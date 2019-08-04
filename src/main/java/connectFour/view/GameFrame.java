@@ -1,6 +1,6 @@
 package connectFour.view;
 
-import connectFour.model.Board;
+import connectFour.model.GameBoard;
 import connectFour.view.buttons.*;
 
 import javax.swing.*;
@@ -13,14 +13,19 @@ public class GameFrame extends JFrame{
         JToolBar jtb = new JToolBar();
         jtb.setFloatable(false);
         jtb.setRollover(true);
-        jtb.add(new ButtonColumnOne());
 
-        for(int i = 0; i < 6; i++){
-            jtb.add(new ButtonColumnOne());
-        }
-
-        Board board = new Board();
+        GameBoard board = new GameBoard();
         GamePanel panel = new GamePanel(board);
+
+        jtb.add(new ButtonColumnOne(board));
+        jtb.add(new ButtonColumnTwo(board));
+        jtb.add(new ButtonColumnThree(board));
+        jtb.add(new ButtonColumnFour(board));
+        jtb.add(new ButtonColumnFive(board));
+        jtb.add(new ButtonColumnSix(board));
+        jtb.add(new ButtonColumnSeven(board));
+
+
         /* adding the buttons for the toolbar */
         this.add(jtb,BorderLayout.PAGE_START);
         this.getContentPane().add(panel);

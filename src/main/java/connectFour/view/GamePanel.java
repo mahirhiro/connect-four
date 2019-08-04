@@ -1,6 +1,6 @@
 package connectFour.view;
 
-import connectFour.model.Board;
+import connectFour.model.GameBoard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,22 +13,22 @@ import java.util.Observer;
 
 public class GamePanel extends JPanel implements Observer {
 
-    public GamePanel(Board board) {
+    private GameBoard board;
+    public JLabel checkerLabel = null;
+
+    public GamePanel(GameBoard board) {
         board.addObserver(this);
 
         setVisible(true);
         setOpaque(true);
+        setBackground(new Color(0,0,128));
     }
 
     public GamePanel() {
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        repaint();
-    }
-
     /* painting the background image */
+
     private void paintImage(Graphics g){
         BufferedImage texture = null;
         String fileName = "target/production/connectFour/Connect4Board.png";
@@ -40,10 +40,25 @@ public class GamePanel extends JPanel implements Observer {
         }
         g.drawImage(texture, 0, 0, null);
     }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         paintImage(g);
+        drawCenteredCircle(g);
+    }
+    public void drawCenteredCircle(Graphics g) {
+
+        g.setColor(board.getCheckerColor());
+        g.fillOval(100,100,50,50);
 
     }
 
+
+
+
+
+    @Override
+    public void update(Observable o, Object arg) {
+        repaint();
+    }
 }
