@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Observer {
     }
     public void drawCenteredCircle(Graphics g) {
         for (Checker checker: board.getCheckers()) {
-            g.setColor(Color.red);
+            g.setColor(board.getCheckerColor());
             g.fillOval((int)checker.getX(), (int)checker.getY(), (int)checker.getWidth(), (int)checker.getHeight());
         }
     }

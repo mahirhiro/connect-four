@@ -15,10 +15,23 @@ public class GameBoard extends Observable implements Observer {
         this.checkers = checkers;
     }
 
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    private int i = 0;
     private List<Checker> checkers = new ArrayList<>();
 
     public Color getCheckerColor() {
-        return checkerColor;
+        if(i % 2 == 0){
+            return Color.red;
+        } else {
+            return Color.orange;
+        }
     }
 
     public void setCheckerColor(Color checkerColor) {

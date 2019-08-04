@@ -30,5 +30,6 @@ public class ButtonOneAction extends AbstractAction implements Observer {
         //board.setCheckerColor(Color.red);
         Checker checker = new Checker();
         board.addChecker(checker);
+        board.setI(board.getI()+1);
     }
 }

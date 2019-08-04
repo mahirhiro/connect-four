@@ -4,10 +4,10 @@ import java.awt.*;
 
 public class Checker extends Rectangle {
 
-    private static int DEFAULT_X = 10;
-    private static int DEFAULT_Y = 10;
-    private static final int DEFAULT_WIDTH = 50;
-    private static final int DEFAULT_HEIGHT = 50;
+    private static int DEFAULT_X = 16;
+    private static int DEFAULT_Y = 450;
+    private static final int DEFAULT_WIDTH = 60;
+    private static final int DEFAULT_HEIGHT = 60;
     private static final String DEFAULT_NAME = "Circle";
     private String name;
     private static int shift_x = 0;
@@ -25,7 +25,7 @@ public class Checker extends Rectangle {
 
     public Checker(){
         this(DEFAULT_X + shift_x, DEFAULT_Y + shift_y, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_NAME);
-        shift_x += 75;
+        shift_y -= 40;
     }
 
     public Color getColor() {
