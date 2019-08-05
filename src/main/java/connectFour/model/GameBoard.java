@@ -8,30 +8,42 @@ import java.util.Observer;
 
 public class GameBoard extends Observable implements Observer {
 
-    public GameBoard() {
-    }
-
-    public GameBoard(List<Checker> checkers) {
-        this.checkers = checkers;
-    }
-
-    public void setI(int i) {
-        this.i = i;
-    }
-
-    public int getI() {
-        return i;
-    }
-
-    private int i = 0;
+    private boolean playerTurn;
+    private char[][] board = new char[BOARD_HEIGHT][BOARD_WIDTH];
     private List<Checker> checkers = new ArrayList<>();
 
+    private static final int BOARD_WIDTH = 7;
+    private static final int BOARD_HEIGHT = 6;
+
+    public GameBoard() {
+        this.playerTurn = true; // Player begins by default... for now
+    }
+
+    /*  Do you ever start a game with checkers already in place?
+    public GameBoard(List<Checker> checkers) {
+        this.checkers = checkers;
+    }  */
+
+    /**
+     * End a turn by flipping the boolean that represents whose turn it is.
+     */
+    public void endTurn() {
+        this.playerTurn = !playerTurn;
+    }
+
+    /**
+     * Get whether it is the player's turn.
+     * @return playerTurn which is true if it is the player's turn.
+     */
+    public boolean isPlayerTurnI() {
+        return playerTurn;
+    }
+
     public Color getCheckerColor() {
-        if(i % 2 == 0){
-            return Color.red;
-        } else {
-            return Color.orange;
+        if(this.playerTurn){
+            return Color.RED;
         }
+        return Color.ORANGE;
     }
 
     public void setCheckerColor(Color checkerColor) {
@@ -48,9 +60,6 @@ public class GameBoard extends Observable implements Observer {
         this.board = board;
     }
 
-    private char[][] board = new char[6][7];
-
-
     public void addChecker(Checker checker){
         checker.add(checker);
         refresh();
@@ -61,14 +70,14 @@ public class GameBoard extends Observable implements Observer {
         notifyObservers();
     }
 
-
     @Override
     public void update(Observable o, Object arg) {
         refresh();
     }
+
     public List<Checker> getCheckers() {
         Checker c = new Checker();
-        checkers.add(c);
+        this.checkers.add(c);
         return checkers;
     }
 
