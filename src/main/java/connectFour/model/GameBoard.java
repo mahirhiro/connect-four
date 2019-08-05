@@ -9,7 +9,11 @@ import java.util.Observer;
 public class GameBoard extends Observable implements Observer {
 
     private boolean playerTurn;
+    private char[][] board = new char[BOARD_HEIGHT][BOARD_WIDTH];
     private List<Checker> checkers = new ArrayList<>();
+
+    private static final int BOARD_WIDTH = 7;
+    private static final int BOARD_HEIGHT = 6;
 
     public GameBoard() {
         this.playerTurn = true; // Player begins by default... for now
@@ -56,9 +60,6 @@ public class GameBoard extends Observable implements Observer {
         this.board = board;
     }
 
-    private char[][] board = new char[6][7];
-
-
     public void addChecker(Checker checker){
         checker.add(checker);
         refresh();
@@ -69,14 +70,14 @@ public class GameBoard extends Observable implements Observer {
         notifyObservers();
     }
 
-
     @Override
     public void update(Observable o, Object arg) {
         refresh();
     }
+
     public List<Checker> getCheckers() {
         Checker c = new Checker();
-        checkers.add(c);
+        this.checkers.add(c);
         return checkers;
     }
 
