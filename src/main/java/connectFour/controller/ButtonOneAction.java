@@ -6,6 +6,7 @@ import connectFour.model.GameBoard;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -30,6 +31,17 @@ public class ButtonOneAction extends AbstractAction implements Observer {
         //board.setCheckerColor(Color.red);
         Checker checker = new Checker();
         board.addChecker(checker);
+
+        int i = 5;
+        while(true){
+            if (board.getBoard()[i][0] == 'X' || board.getBoard()[i][0] == 'O'){
+                i--;
+            } else{
+                break;
+            }
+        }
+        board.setArrayPosition(i,0);
+        board.printAll();
         board.endTurn();
     }
 }

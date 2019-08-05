@@ -23,6 +23,7 @@ public class GamePanel extends JPanel implements Observer {
         setVisible(true);
         setOpaque(true);
         setBackground(new Color(0,0,128));
+        board.printAll();
     }
 
     public GamePanel() {

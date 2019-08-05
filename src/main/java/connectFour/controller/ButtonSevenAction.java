@@ -25,5 +25,17 @@ public class ButtonSevenAction extends AbstractAction implements Observer {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 7");
+
+        int i = 5;
+        while(true){
+            if (board.getBoard()[i][6] == 'X' || board.getBoard()[i][6] == 'O'){
+                i--;
+            } else{
+                break;
+            }
+        }
+        board.setArrayPosition(i,6);
+        board.printAll();
+        board.endTurn();
     }
 }

@@ -1,10 +1,8 @@
 package connectFour.model;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 public class GameBoard extends Observable implements Observer {
 
@@ -15,8 +13,50 @@ public class GameBoard extends Observable implements Observer {
     private static final int BOARD_WIDTH = 7;
     private static final int BOARD_HEIGHT = 6;
 
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    private int row = 6;
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    private int col = -1;
+
     public GameBoard() {
         this.playerTurn = true; // Player begins by default... for now
+    }
+
+    public void setArrayPosition(int row, int col){
+        if(playerTurn) {
+            board[row][col] = 'X';
+        } else {
+            board[row][col] = 'O';
+        }
+    }
+
+    public void printAll() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                System.out.print(board[i][j]);
+
+            }
+            System.out.println();
+        }
+    }
+
+    public char[][] getBoard(){
+        return board;
     }
 
     /*  Do you ever start a game with checkers already in place?
@@ -52,9 +92,7 @@ public class GameBoard extends Observable implements Observer {
 
     private Color checkerColor = Color.BLACK;
 
-    public char[][] getBoard() {
-        return board;
-    }
+
 
     public void setBoard(char[][] board) {
         this.board = board;
@@ -76,8 +114,8 @@ public class GameBoard extends Observable implements Observer {
     }
 
     public List<Checker> getCheckers() {
-        Checker c = new Checker();
-        this.checkers.add(c);
+//        Checker c = new Checker();
+//        this.checkers.add(c);
         return checkers;
     }
 
