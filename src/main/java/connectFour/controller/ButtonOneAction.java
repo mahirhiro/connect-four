@@ -13,6 +13,7 @@ import java.util.Observer;
 public class ButtonOneAction extends AbstractAction implements Observer {
 
     private GameBoard board;
+    private int times = 6;
 
     public ButtonOneAction(GameBoard board) {
         super("Column 1");
@@ -33,6 +34,8 @@ public class ButtonOneAction extends AbstractAction implements Observer {
         board.addChecker(checker);
 
         int i = 5;
+        times--;
+
         while(true){
             if (board.getBoard()[i][0] == 'X' || board.getBoard()[i][0] == 'O'){
                 i--;
@@ -43,5 +46,14 @@ public class ButtonOneAction extends AbstractAction implements Observer {
         board.setArrayPosition(i,0);
         board.printAll();
         board.endTurn();
+        fixEnabled();
+    }
+
+    private void fixEnabled(){
+        if (times == 0){
+            setEnabled(false);
+        } else{
+            setEnabled(true);
+        }
     }
 }

@@ -10,6 +10,7 @@ import java.util.Observer;
 public class ButtonSevenAction extends AbstractAction implements Observer {
 
     private GameBoard board;
+    private int times = 6;
 
     public ButtonSevenAction(GameBoard board) {
         super("Column 7");
@@ -27,6 +28,8 @@ public class ButtonSevenAction extends AbstractAction implements Observer {
         System.out.println("Column 7");
 
         int i = 5;
+        times--;
+
         while(true){
             if (board.getBoard()[i][6] == 'X' || board.getBoard()[i][6] == 'O'){
                 i--;
@@ -37,5 +40,14 @@ public class ButtonSevenAction extends AbstractAction implements Observer {
         board.setArrayPosition(i,6);
         board.printAll();
         board.endTurn();
+        fixEnabled();
+    }
+
+    private void fixEnabled(){
+        if (times == 0){
+            setEnabled(false);
+        } else{
+            setEnabled(true);
+        }
     }
 }
