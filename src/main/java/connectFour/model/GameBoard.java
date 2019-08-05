@@ -8,30 +8,38 @@ import java.util.Observer;
 
 public class GameBoard extends Observable implements Observer {
 
-    public GameBoard() {
-    }
-
-    public GameBoard(List<Checker> checkers) {
-        this.checkers = checkers;
-    }
-
-    public void setI(int i) {
-        this.i = i;
-    }
-
-    public int getI() {
-        return i;
-    }
-
-    private int i = 0;
+    private boolean playerTurn;
     private List<Checker> checkers = new ArrayList<>();
 
+    public GameBoard() {
+        this.playerTurn = true; // Player begins by default... for now
+    }
+
+    /*  Do you ever start a game with checkers already in place?
+    public GameBoard(List<Checker> checkers) {
+        this.checkers = checkers;
+    }  */
+
+    /**
+     * End a turn by flipping the boolean that represents whose turn it is.
+     */
+    public void endTurn() {
+        this.playerTurn = !playerTurn;
+    }
+
+    /**
+     * Get whether it is the player's turn.
+     * @return playerTurn which is true if it is the player's turn.
+     */
+    public boolean isPlayerTurnI() {
+        return playerTurn;
+    }
+
     public Color getCheckerColor() {
-        if(i % 2 == 0){
-            return Color.red;
-        } else {
-            return Color.orange;
+        if(this.playerTurn){
+            return Color.RED;
         }
+        return Color.ORANGE;
     }
 
     public void setCheckerColor(Color checkerColor) {
