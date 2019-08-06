@@ -18,13 +18,13 @@ public class GameFrame extends JFrame{
         GameBoard board = new GameBoard();
         GamePanel panel = new GamePanel(board);
 
-        jtb.add(new ButtonColumnOne(board));
-        jtb.add(new ButtonColumnTwo(board));
-        jtb.add(new ButtonColumnThree(board));
-        jtb.add(new ButtonColumnFour(board));
-        jtb.add(new ButtonColumnFive(board));
-        jtb.add(new ButtonColumnSix(board));
-        jtb.add(new ButtonColumnSeven(board));
+        jtb.add(new ButtonColumnOne(board,panel));
+        jtb.add(new ButtonColumnTwo(board,panel));
+        jtb.add(new ButtonColumnThree(board,panel));
+        jtb.add(new ButtonColumnFour(board,panel));
+        jtb.add(new ButtonColumnFive(board,panel));
+        jtb.add(new ButtonColumnSix(board,panel));
+        jtb.add(new ButtonColumnSeven(board,panel));
 
 
         /* adding the buttons for the toolbar */

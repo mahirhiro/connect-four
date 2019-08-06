@@ -17,6 +17,8 @@ public class GamePanel extends JPanel implements Observer {
     private GameBoard board;
     public JLabel checkerLabel = null;
 
+    private String tips = ("Winner winner chicken dinner!");
+
     public GamePanel(GameBoard board) {
         board.addObserver(this);
         this.board = board;
@@ -24,6 +26,7 @@ public class GamePanel extends JPanel implements Observer {
         setOpaque(true);
         setBackground(new Color(0,0,128));
         board.printAll();
+        board.boardRowChecker();
     }
 
     public GamePanel() {
@@ -48,11 +51,18 @@ public class GamePanel extends JPanel implements Observer {
         super.paintComponent(g);
         drawCenteredCircle(g);
         paintImage(g);
+
     }
     public void drawCenteredCircle(Graphics g) {
         for (Checker checker: board.getCheckers()) {
             g.setColor(board.getCheckerColor());
             g.fillOval((int)checker.getX(), (int)checker.getY(), (int)checker.getWidth(), (int)checker.getHeight());
+        }
+    }
+
+    public void checkWinner(){
+        if (board.boardRowChecker()){
+            JOptionPane.showMessageDialog(null,tips,"Game over",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

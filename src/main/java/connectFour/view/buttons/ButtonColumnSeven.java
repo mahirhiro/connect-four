@@ -2,6 +2,7 @@ package connectFour.view.buttons;
 
 import connectFour.controller.ButtonSevenAction;
 import connectFour.model.GameBoard;
+import connectFour.view.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,8 @@ public class ButtonColumnSeven extends JMenuItem {
         setToolTipText("Add a vertex");
     }
 
-    public ButtonColumnSeven(GameBoard board){
-        super(new ButtonSevenAction(board));
+    public ButtonColumnSeven(GameBoard board, GamePanel panel){
+        super(new ButtonSevenAction(board,panel));
         setButtonProperties();
     }
 }

@@ -1,6 +1,7 @@
 package connectFour.controller;
 
 import connectFour.model.GameBoard;
+import connectFour.view.GamePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +11,15 @@ import java.util.Observer;
 public class ButtonThreeAction extends AbstractAction implements Observer {
 
     private GameBoard board;
+    private GamePanel panel;
+
     private int times = 6;
 
-    public ButtonThreeAction(GameBoard board) {
+    public ButtonThreeAction(GameBoard board, GamePanel panel) {
         super("Column 3");
         this.board = board;
+        this.panel = panel;
+        panel.checkWinner();
 
     }
 

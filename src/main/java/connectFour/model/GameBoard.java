@@ -119,4 +119,24 @@ public class GameBoard extends Observable implements Observer {
         return checkers;
     }
 
+    int count = 0;
+
+    public boolean boardRowChecker(){
+        for(int i = 5; i > 0; i--){
+            for (int j = 0; j < 7; j++){
+                if (board[i][j] == 'X') {
+                    count++;
+                }
+                else if (count == 4){
+                    System.out.println("Winner: X");
+                    return true;
+                }
+                else {
+                    count = 0;
+                }
+            }
+        }
+        return false;
+    }
+
 }
