@@ -37,8 +37,8 @@ public class GameBoard extends Observable implements Observer {
         this.playerTurn = true; // Player begins by default... for now
     }
 
-    public void setArrayPosition(int row, int col){
-        if(playerTurn) {
+    public void setArrayPosition(int row, int col) {
+        if (playerTurn) {
             board[row][col] = 'X';
         } else {
             board[row][col] = 'O';
@@ -55,7 +55,7 @@ public class GameBoard extends Observable implements Observer {
         }
     }
 
-    public char[][] getBoard(){
+    public char[][] getBoard() {
         return board;
     }
 
@@ -73,6 +73,7 @@ public class GameBoard extends Observable implements Observer {
 
     /**
      * Get whether it is the player's turn.
+     *
      * @return playerTurn which is true if it is the player's turn.
      */
     public boolean isPlayerTurnI() {
@@ -80,7 +81,7 @@ public class GameBoard extends Observable implements Observer {
     }
 
     public Color getCheckerColor() {
-        if(this.playerTurn){
+        if (this.playerTurn) {
             return Color.RED;
         }
         return Color.ORANGE;
@@ -93,17 +94,16 @@ public class GameBoard extends Observable implements Observer {
     private Color checkerColor = Color.BLACK;
 
 
-
     public void setBoard(char[][] board) {
         this.board = board;
     }
 
-    public void addChecker(Checker checker){
+    public void addChecker(Checker checker) {
         checker.add(checker);
         refresh();
     }
 
-    public void refresh(){
+    public void refresh() {
         setChanged();
         notifyObservers();
     }
@@ -122,46 +122,59 @@ public class GameBoard extends Observable implements Observer {
     private int count = 0;
     private int count2 = 0;
 
-    public boolean boardRowChecker(){
-        for(int i = 5; i > 0; i--){
-            for (int j = 0; j < 7; j++){
-                if (board[i][j] == 'X') {
-                    count++;
-                }
-                else if (board[i][j] == 'O'){
-                    count2++;
-                }
-                else if (count == 4 || count2 == 4){
+    //    public boolean boardRowChecker(){
+//        for(int i = 5; i > 0; i--){
+//            for (int j = 0; j < 7; j++){
+//                if (board[i][j] == 'X') {
+//                    count++;
+//                }
+//                else if (board[i][j] == 'O'){
+//                    count2++;
+//                }
+//                else if (count == 4 || count2 == 4){
+//                    return true;
+//                }
+//                else {
+//                    count = 0;
+//                    count2 = 0;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+    public boolean boardRowChecker() {
+        for (int i = 0; i < BOARD_HEIGHT; i++) {
+            for (int j = 0; j < BOARD_WIDTH - 3; j++) {
+                if (this.board[i][j] == 'X' && this.board[i][j + 1] == 'X' && this.board[i][j + 2] == 'X' && this.board[i][j + 3] == 'X') {
                     return true;
-                }
-                else {
-                    count = 0;
-                    count2 = 0;
+                } else if (this.board[i][j] == 'O' && this.board[i][j + 1] == 'O' && this.board[i][j + 2] == 'O' && this.board[i][j + 3] == 'O') {
+                    return true;
                 }
             }
         }
         return false;
     }
 
-    public boolean boardColumnChecker(){
-        for (int j = 0; j < 7; j++){
-            for(int i = 5; i > 0; i--){
-                if (board[i][j] == 'X') {
-                    count++;
-                }
-                else if (board[i][j] == 'O'){
-                    count2++;
-                }
-                else if (count == 4 || count2 == 4){
+    public boolean boardColumnChecker() {
+        for (int j = 0; j < BOARD_WIDTH; j++) {
+            for (int i = 0; i < BOARD_HEIGHT - 3; i++) {
+                if (this.board[i][j] == 'X' && this.board[i + 1][j] == 'X' && this.board[i + 2][j] == 'X' && this.board[i + 3][j] == 'X') {
                     return true;
-                }
-                else {
-                    count = 0;
-                    count2 = 0;
+                } else if (this.board[i][j] == 'O' && this.board[i + 1][j] == 'O' && this.board[i + 2][j] == 'O' && this.board[i + 3][j] == 'O') {
+                    return true;
                 }
             }
         }
         return false;
     }
 
+    public boolean boardAscendingDiagonalCheck() {
+        for (int i = 3; i < BOARD_WIDTH-1; i++) {
+            for (int j = 0; j < BOARD_HEIGHT-3; j++) {
+                if (this.board[i][j] == 'X' && this.board[i-1][j+1] == 'X' && this.board[i-2][j+2] == 'X' && this.board[i-3][j+3] == 'X')
+                    return true;
+                }
+            }
+        return false;
+    }
 }

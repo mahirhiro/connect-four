@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.EventListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -60,14 +61,11 @@ public class GamePanel extends JPanel implements Observer {
         }
     }
 
-    public void checkWinner(){
-        if (board.boardRowChecker()){
-            JOptionPane.showMessageDialog(null,tips,"Game over",JOptionPane.INFORMATION_MESSAGE);
-        }else if(board.boardColumnChecker()){
-            JOptionPane.showMessageDialog(null,tips,"Game over",JOptionPane.INFORMATION_MESSAGE);
+    public void checkWinner() {
+        if (board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck()) {
+            JOptionPane.showMessageDialog(null, tips, "Game over", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
 
     @Override
     public void update(Observable o, Object arg) {
