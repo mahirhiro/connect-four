@@ -63,6 +63,8 @@ public class GamePanel extends JPanel implements Observer {
     public void checkWinner(){
         if (board.boardRowChecker()){
             JOptionPane.showMessageDialog(null,tips,"Game over",JOptionPane.INFORMATION_MESSAGE);
+        }else if(board.boardColumnChecker()){
+            JOptionPane.showMessageDialog(null,tips,"Game over",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

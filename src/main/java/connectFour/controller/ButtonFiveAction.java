@@ -39,6 +39,7 @@ public class ButtonFiveAction extends AbstractAction implements Observer {
                 break;
             }
         }
+
         board.setArrayPosition(i,4);
         board.printAll();
         board.endTurn();

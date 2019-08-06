@@ -119,7 +119,8 @@ public class GameBoard extends Observable implements Observer {
         return checkers;
     }
 
-    int count = 0;
+    private int count = 0;
+    private int count2 = 0;
 
     public boolean boardRowChecker(){
         for(int i = 5; i > 0; i--){
@@ -127,12 +128,36 @@ public class GameBoard extends Observable implements Observer {
                 if (board[i][j] == 'X') {
                     count++;
                 }
-                else if (count == 4){
-                    System.out.println("Winner: X");
+                else if (board[i][j] == 'O'){
+                    count2++;
+                }
+                else if (count == 4 || count2 == 4){
                     return true;
                 }
                 else {
                     count = 0;
+                    count2 = 0;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean boardColumnChecker(){
+        for (int j = 0; j < 7; j++){
+            for(int i = 5; i > 0; i--){
+                if (board[i][j] == 'X') {
+                    count++;
+                }
+                else if (board[i][j] == 'O'){
+                    count2++;
+                }
+                else if (count == 4 || count2 == 4){
+                    return true;
+                }
+                else {
+                    count = 0;
+                    count2 = 0;
                 }
             }
         }
