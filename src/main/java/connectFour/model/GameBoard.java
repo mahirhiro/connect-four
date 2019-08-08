@@ -87,16 +87,6 @@ public class GameBoard extends Observable implements Observer {
         return Color.ORANGE;
     }
 
-    public void setCheckerColor(Color checkerColor) {
-        this.checkerColor = checkerColor;
-    }
-
-    private Color checkerColor = Color.BLACK;
-
-
-    public void setBoard(char[][] board) {
-        this.board = board;
-    }
 
     public void addChecker(Checker checker) {
         checker.add(checker);
@@ -119,10 +109,10 @@ public class GameBoard extends Observable implements Observer {
         return checkers;
     }
 
-    private int count = 0;
-    private int count2 = 0;
+//    private int count = 0;
+//    private int count2 = 0;
 
-    //    public boolean boardRowChecker(){
+//    public boolean boardRowChecker(){
 //        for(int i = 5; i > 0; i--){
 //            for (int j = 0; j < 7; j++){
 //                if (board[i][j] == 'X') {
@@ -142,6 +132,8 @@ public class GameBoard extends Observable implements Observer {
 //        }
 //        return false;
 //    }
+
+
     public boolean boardRowChecker() {
         for (int i = 0; i < BOARD_HEIGHT; i++) {
             for (int j = 0; j < BOARD_WIDTH - 3; j++) {
@@ -169,12 +161,16 @@ public class GameBoard extends Observable implements Observer {
     }
 
     public boolean boardAscendingDiagonalCheck() {
-        for (int i = 3; i < BOARD_WIDTH-1; i++) {
-            for (int j = 0; j < BOARD_HEIGHT-3; j++) {
-                if (this.board[i][j] == 'X' && this.board[i-1][j+1] == 'X' && this.board[i-2][j+2] == 'X' && this.board[i-3][j+3] == 'X')
+        for (int i = 3; i < BOARD_WIDTH - 1; i++) {
+            for (int j = 0; j < BOARD_HEIGHT - 3; j++) {
+                if (this.board[i][j] == 'X' && this.board[i - 1][j + 1] == 'X' && this.board[i - 2][j + 2] == 'X' && this.board[i - 3][j + 3] == 'X') {
+                    return true;
+                } else if (this.board[i][j] == 'O' && this.board[i - 1][j + 1] == 'O' && this.board[i - 2][j + 2] == 'O' && this.board[i - 3][j + 3] == '0') {
                     return true;
                 }
             }
+        }
         return false;
     }
 }
+
