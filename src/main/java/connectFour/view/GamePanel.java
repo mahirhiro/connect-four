@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Observer {
 
     private void paintImage(Graphics g){
         BufferedImage texture = null;
-        String fileName = "target/production/connectFour/Connect4Board.png";
+        String fileName = "production/production/connectFour/textures/Connect4Board.png";
         try {
             File imgFile = new File(fileName);
             texture = ImageIO.read(imgFile);
