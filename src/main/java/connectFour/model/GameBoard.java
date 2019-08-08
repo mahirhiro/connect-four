@@ -62,6 +62,7 @@ public class GameBoard extends Observable implements Observer {
      */
     public void endTurn() {
         this.playerTurn = !playerTurn;
+        refresh();
     }
 
     /**

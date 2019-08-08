@@ -50,17 +50,27 @@ public class GamePanel extends JPanel implements Observer {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        drawCenteredCircle(g);
+        //drawCenteredCircle(g);
+        paintCheckers(g);
         paintImage(g);
-
     }
 
-    /*
     private void paintCheckers(Graphics g) {
-        for
+        char[][] board = this.board.getBoard();
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (board[i][j] == 'X') {
+                    g.setColor(Color.ORANGE);
+                    g.fillOval(j*80, i*80, 60, 60);
+                } else if (board[i][j] == 'O') {
+                    g.setColor(Color.RED);
+                    g.fillOval(j*80, i*80, 60, 60);
+                }
+                /* Swapping the 2d board dimensions will greatly improve this method. You will be able to break when
+                * the top of a column has been reached, and the fillOval method will only need to be written once. */
+            }
+        }
     }
-
-     */
 
     public void drawCenteredCircle(Graphics g) {
         /* for (Checker checker: board.getCheckers()) {
