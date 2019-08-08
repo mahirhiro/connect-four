@@ -1,6 +1,5 @@
 package connectFour.view;
 
-import connectFour.model.Checker;
 import connectFour.model.GameBoard;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.EventListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,6 +15,7 @@ public class GamePanel extends JPanel implements Observer {
 
     private GameBoard board;
     public JLabel checkerLabel = null;
+    private String option;
 
     private String tips = ("Winner winner chicken dinner!");
 
@@ -50,7 +49,6 @@ public class GamePanel extends JPanel implements Observer {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        //drawCenteredCircle(g);
         paintCheckers(g);
         paintImage(g);
     }
@@ -60,16 +58,33 @@ public class GamePanel extends JPanel implements Observer {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 if (board[i][j] == 'X') {
-                    g.setColor(Color.ORANGE);
-                    g.fillOval(j*80, i*80, 60, 60);
+                    option = "orange";
+                    g.drawImage( getPicture(),j*90 + 17, i*80 + 8, 66, 67,null);
                 } else if (board[i][j] == 'O') {
-                    g.setColor(Color.RED);
-                    g.fillOval(j*80, i*80, 60, 60);
+                    option = "red";
+                    g.drawImage( getPicture(),j*90 + 17, i*80 + 8, 66, 67,null);
                 }
                 /* Swapping the 2d board dimensions will greatly improve this method. You will be able to break when
                 * the top of a column has been reached, and the fillOval method will only need to be written once. */
             }
         }
+    }
+
+    public BufferedImage getPicture() {
+        String fileName;
+        if (option.equals("red")) {
+            fileName = "production/production/connectFour/textures/red.png";
+        } else {
+            fileName = "production/production/connectFour/textures/orange.png";
+        }
+        BufferedImage texture = null;
+        try {
+            File imgFile = new File(fileName);
+            texture = ImageIO.read(imgFile);
+        } catch (IOException ioe) {
+            System.err.println("Could not load " + fileName);
+        }
+        return texture;
     }
 
     public void drawCenteredCircle(Graphics g) {

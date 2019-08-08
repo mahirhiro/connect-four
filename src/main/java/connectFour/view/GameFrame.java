@@ -30,7 +30,7 @@ public class GameFrame extends JFrame{
         /* adding the buttons for the toolbar */
         this.add(jtb,BorderLayout.PAGE_START);
         this.getContentPane().add(panel);
-
+        this.setTitle("CONNECT 4");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(640, 530));
         this.setResizable(true);
