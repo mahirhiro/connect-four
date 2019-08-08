@@ -8,12 +8,27 @@ public class GameBoard extends Observable implements Observer {
 
     private boolean playerTurn;
     private char[][] board = new char[BOARD_HEIGHT][BOARD_WIDTH];
-
     private static final int BOARD_WIDTH = 7;
     private static final int BOARD_HEIGHT = 6;
 
     public GameBoard() {
         this.playerTurn = true; // Player begins by default... for now
+    }
+
+    /**
+     * Get the width of the board
+     * @return an integer denoting the amount of columns on the board.
+     */
+    public static int getBoardWidth() {
+        return BOARD_WIDTH;
+    }
+
+    /**
+     * Get the height of the board
+     * @return an integer denoting the amount of rows on the board.
+     */
+    public static int getBoardHeight() {
+        return BOARD_HEIGHT;
     }
 
     public void setArrayPosition(int row, int col) {

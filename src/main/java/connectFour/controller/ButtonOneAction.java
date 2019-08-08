@@ -34,7 +34,6 @@ public class ButtonOneAction extends AbstractAction implements Observer {
         System.out.println("Column 1");
         //board.setCheckerColor(Color.red);
         Checker checker = new Checker();
-        board.addChecker(checker);
 
         int i = 5;
         times--;

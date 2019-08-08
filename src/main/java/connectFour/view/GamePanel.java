@@ -54,11 +54,20 @@ public class GamePanel extends JPanel implements Observer {
         paintImage(g);
 
     }
+
+    /*
+    private void paintCheckers(Graphics g) {
+        for
+    }
+
+     */
+
     public void drawCenteredCircle(Graphics g) {
-        for (Checker checker: board.getCheckers()) {
+        /* for (Checker checker: board.getCheckers()) {
             g.setColor(board.getCheckerColor());
             g.fillOval((int)checker.getX(), (int)checker.getY(), (int)checker.getWidth(), (int)checker.getHeight());
         }
+         */
     }
 
     public void checkWinner() {
