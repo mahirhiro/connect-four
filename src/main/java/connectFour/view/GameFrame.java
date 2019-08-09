@@ -32,7 +32,7 @@ public class GameFrame extends JFrame{
         this.getContentPane().add(panel);
         this.setTitle("CONNECT 4");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(640, 530));
+        this.setPreferredSize(new Dimension(630, 530));
         this.setResizable(true);
         this.pack();
         this.setLocationRelativeTo (null); // Center on screen.

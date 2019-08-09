@@ -2,7 +2,6 @@ package connectFour.model;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class GameBoard extends Observable implements Observer {
 
@@ -19,7 +18,7 @@ public class GameBoard extends Observable implements Observer {
      * Get the width of the board
      * @return an integer denoting the amount of columns on the board.
      */
-    public static int getBoardWidth() {
+    public int getBoardWidth() {
         return BOARD_WIDTH;
     }
 
@@ -27,7 +26,7 @@ public class GameBoard extends Observable implements Observer {
      * Get the height of the board
      * @return an integer denoting the amount of rows on the board.
      */
-    public static int getBoardHeight() {
+    public int getBoardHeight() {
         return BOARD_HEIGHT;
     }
 
@@ -87,6 +86,20 @@ public class GameBoard extends Observable implements Observer {
         refresh();
     }
 
+    public void setBoard(int column){
+        int i = 5;
+
+        while(true){
+            if (board[i][column] == 'X' || board[i][column] == 'O'){
+                i--;
+            } else{
+                break;
+            }
+        }
+        setArrayPosition(i,column);
+    }
+
+
 
 //    private int count = 0;
 //    private int count2 = 0;
@@ -144,6 +157,18 @@ public class GameBoard extends Observable implements Observer {
                 if (this.board[i][j] == 'X' && this.board[i - 1][j + 1] == 'X' && this.board[i - 2][j + 2] == 'X' && this.board[i - 3][j + 3] == 'X') {
                     return true;
                 } else if (this.board[i][j] == 'O' && this.board[i - 1][j + 1] == 'O' && this.board[i - 2][j + 2] == 'O' && this.board[i - 3][j + 3] == '0') {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean boardDecendingDiagonalCheck() {
+        for (int i = 3; i < BOARD_WIDTH - 1; i++) {
+            for (int j = 3; j <BOARD_HEIGHT; j++) {
+                if (this.board[i][j] == 'X' && this.board[i - 1][j - 1] == 'X' && this.board[i - 2][j - 2] == 'X' && this.board[i - 3][j - 3] == 'X') {
+                    return true;
+                } else if (this.board[i][j] == 'O' && this.board[i - 1][j - 1] == 'O' && this.board[i - 2][j - 2] == '0' && this.board[i - 3][j - 3] == 'O') {
                     return true;
                 }
             }

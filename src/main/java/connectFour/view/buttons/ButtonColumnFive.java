@@ -1,7 +1,6 @@
 package connectFour.view.buttons;
 
 import connectFour.controller.ButtonFiveAction;
-import connectFour.controller.ButtonOneAction;
 import connectFour.model.GameBoard;
 import connectFour.view.GamePanel;
 

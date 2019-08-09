@@ -16,6 +16,10 @@ public class GamePanel extends JPanel implements Observer {
     private GameBoard board;
     public JLabel checkerLabel = null;
     private String option;
+    private static final int WIDTH = 66;
+    private static final int HEIGHT = 66;
+    private static final int X_ADJUSTMENT = 17;
+    private static final int Y_ADJUSTMENT = 8;
 
     private String tips = ("Winner winner chicken dinner!");
 
@@ -50,19 +54,20 @@ public class GamePanel extends JPanel implements Observer {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         paintCheckers(g);
+        //drawCenteredCircle(g);
         paintImage(g);
     }
 
     private void paintCheckers(Graphics g) {
         char[][] board = this.board.getBoard();
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < this.board.getBoardHeight(); i++) {
+            for (int j = 0; j < this.board.getBoardWidth(); j++) {
                 if (board[i][j] == 'X') {
                     option = "orange";
-                    g.drawImage( getPicture(),j*90 + 17, i*80 + 8, 66, 67,null);
+                    g.drawImage( getPicture(),j*90 + X_ADJUSTMENT, i*80 + Y_ADJUSTMENT, WIDTH, HEIGHT,null);
                 } else if (board[i][j] == 'O') {
                     option = "red";
-                    g.drawImage( getPicture(),j*90 + 17, i*80 + 8, 66, 67,null);
+                    g.drawImage( getPicture(),j*90 + X_ADJUSTMENT, i*80 + Y_ADJUSTMENT, WIDTH, HEIGHT,null);
                 }
                 /* Swapping the 2d board dimensions will greatly improve this method. You will be able to break when
                 * the top of a column has been reached, and the fillOval method will only need to be written once. */
@@ -70,7 +75,7 @@ public class GamePanel extends JPanel implements Observer {
         }
     }
 
-    public BufferedImage getPicture() {
+    private BufferedImage getPicture() {
         String fileName;
         if (option.equals("red")) {
             fileName = "production/production/connectFour/textures/red.png";
@@ -96,7 +101,7 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     public void checkWinner() {
-        if (board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck()) {
+        if (board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDecendingDiagonalCheck()) {
             JOptionPane.showMessageDialog(null, tips, "Game over", JOptionPane.INFORMATION_MESSAGE);
         }
     }

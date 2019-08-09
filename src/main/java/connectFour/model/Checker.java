@@ -24,7 +24,4 @@ public class Checker extends Rectangle {
         shift_y -= 40;
     }
 
-    public Color getColor() {
-        return Color.orange;
-    }
 }
