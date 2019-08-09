@@ -28,18 +28,8 @@ public class ButtonFourAction extends AbstractAction implements Observer {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 4");
-
-        int i = 5;
-        times --;
-
-        while(true){
-            if (board.getBoard()[i][3] == 'X' || board.getBoard()[i][3] == 'O'){
-                i--;
-            } else{
-                break;
-            }
-        }
-        board.setArrayPosition(i,3);
+        times--;
+        board.setBoard(3);
         board.printAll();
         board.endTurn();
         fixEnabled();

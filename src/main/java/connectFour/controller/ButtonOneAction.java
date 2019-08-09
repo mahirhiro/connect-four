@@ -1,13 +1,10 @@
 package connectFour.controller;
 
-import connectFour.model.Checker;
 import connectFour.model.GameBoard;
 import connectFour.view.GamePanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -32,19 +29,10 @@ public class ButtonOneAction extends AbstractAction implements Observer {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 1");
-        //board.setCheckerColor(Color.red);
 
-        int i = 5;
         times--;
+        board.setBoard(0);
 
-        while(true){
-            if (board.getBoard()[i][0] == 'X' || board.getBoard()[i][0] == 'O'){
-                i--;
-            } else{
-                break;
-            }
-        }
-        board.setArrayPosition(i,0);
         board.printAll();
         board.endTurn();
         fixEnabled();

@@ -29,17 +29,8 @@ public class ButtonTwoAction extends AbstractAction implements Observer {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 6");
-
-        int i = 5;
         times--;
-        while(true){
-            if (board.getBoard()[i][1] == 'X' || board.getBoard()[i][1] == 'O'){
-                i--;
-            } else{
-                break;
-            }
-        }
-        board.setArrayPosition(i,1);
+        board.setBoard(1);
         board.printAll();
         board.endTurn();
         fixEnabled();
