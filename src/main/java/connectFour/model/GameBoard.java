@@ -7,8 +7,8 @@ public class GameBoard extends Observable implements Observer {
 
     private boolean playerTurn;
     private char[][] board = new char[BOARD_HEIGHT][BOARD_WIDTH];
-    private static final int BOARD_WIDTH = 7;
     private static final int BOARD_HEIGHT = 6;
+    private static final int BOARD_WIDTH = 7;
 
     public GameBoard() {
         this.playerTurn = true; // Player begins by default... for now
@@ -152,11 +152,11 @@ public class GameBoard extends Observable implements Observer {
     }
 
     public boolean boardAscendingDiagonalCheck() {
-        for (int i = 3; i < BOARD_WIDTH - 1; i++) {
-            for (int j = 0; j < BOARD_HEIGHT - 3; j++) {
-                if (this.board[i][j] == 'X' && this.board[i - 1][j + 1] == 'X' && this.board[i - 2][j + 2] == 'X' && this.board[i - 3][j + 3] == 'X') {
+        for (int i=3; i < BOARD_WIDTH - 1; i++){
+            for (int j=0; j<BOARD_HEIGHT-2; j++){
+                if (this.board[i][j] == 'X' && this.board[i-1][j+1] == 'X' && this.board[i-2][j+2] == 'X' && this.board[i-3][j+3] == 'X') {
                     return true;
-                } else if (this.board[i][j] == 'O' && this.board[i - 1][j + 1] == 'O' && this.board[i - 2][j + 2] == 'O' && this.board[i - 3][j + 3] == '0') {
+                } else if (this.board[i][j] == 'O' && this.board[i-1][j+1] == 'O' && this.board[i-2][j+2] == 'O' && this.board[i-3][j+3] == 'O') {
                     return true;
                 }
             }
@@ -164,11 +164,11 @@ public class GameBoard extends Observable implements Observer {
         return false;
     }
     public boolean boardDecendingDiagonalCheck() {
-        for (int i = 3; i < BOARD_WIDTH - 1; i++) {
-            for (int j = 3; j <BOARD_HEIGHT; j++) {
-                if (this.board[i][j] == 'X' && this.board[i - 1][j - 1] == 'X' && this.board[i - 2][j - 2] == 'X' && this.board[i - 3][j - 3] == 'X') {
+        for (int i=3; i< BOARD_WIDTH - 1; i++){
+            for (int j=3; j<BOARD_HEIGHT ; j++){
+                if (this.board[i][j] == 'X' && this.board[i-1][j-1] == 'X' && this.board[i-2][j-2] == 'X' && this.board[i-3][j-3] == 'X') {
                     return true;
-                } else if (this.board[i][j] == 'O' && this.board[i - 1][j - 1] == 'O' && this.board[i - 2][j - 2] == '0' && this.board[i - 3][j - 3] == 'O') {
+                } else if (this.board[i][j] == 'O' && this.board[i-1][j-1] == 'O' && this.board[i-2][j-2] == 'O' && this.board[i-3][j-3] == 'O') {
                     return true;
                 }
             }
@@ -176,7 +176,7 @@ public class GameBoard extends Observable implements Observer {
         return false;
     }
 
-    public void refresh() {
+    private void refresh() {
         setChanged();
         notifyObservers();
     }
