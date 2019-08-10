@@ -115,6 +115,7 @@ public class GamePanel extends JPanel implements Observer {
     }
     public void messageDisplayer(){
         JOptionPane.showMessageDialog(null, message, "Game over", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
     }
 
     /* This function creates the sound for each button in our code*/
