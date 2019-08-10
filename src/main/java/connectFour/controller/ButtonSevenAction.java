@@ -36,7 +36,11 @@ public class ButtonSevenAction extends AbstractAction implements Observer {
         board.endTurn();
         fixEnabled();
         board.boardRowChecker();
-        panel.checkWinner();
+        panel.playMusic();
+        if(panel.checkWinner()){
+            panel.setMessage(panel.getMessage()+board.getCheckerColor()+ "won the game!");
+            panel.messageDisplayer();
+        }
     }
 
     private void fixEnabled(){

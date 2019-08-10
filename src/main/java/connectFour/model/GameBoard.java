@@ -73,11 +73,11 @@ public class GameBoard extends Observable implements Observer {
         return playerTurn;
     }
 
-    public Color getCheckerColor() {
+    public String getCheckerColor() {
         if (this.playerTurn) {
-            return Color.RED;
+            return "Red";
         }
-        return Color.ORANGE;
+        return"Orange";
     }
 
 
@@ -98,32 +98,6 @@ public class GameBoard extends Observable implements Observer {
         }
         setArrayPosition(i,column);
     }
-
-
-
-//    private int count = 0;
-//    private int count2 = 0;
-
-//    public boolean boardRowChecker(){
-//        for(int i = 5; i > 0; i--){
-//            for (int j = 0; j < 7; j++){
-//                if (board[i][j] == 'X') {
-//                    count++;
-//                }
-//                else if (board[i][j] == 'O'){
-//                    count2++;
-//                }
-//                else if (count == 4 || count2 == 4){
-//                    return true;
-//                }
-//                else {
-//                    count = 0;
-//                    count2 = 0;
-//                }
-//            }
-//        }
-//        return false;
-//    }
 
     public boolean boardRowChecker() {
         for (int i = 0; i < BOARD_HEIGHT; i++) {

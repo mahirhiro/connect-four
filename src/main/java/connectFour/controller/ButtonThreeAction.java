@@ -36,7 +36,11 @@ public class ButtonThreeAction extends AbstractAction implements Observer {
         board.printAll();
         board.endTurn();
         fixEnabled();
-        panel.checkWinner();
+        panel.playMusic();
+        if(panel.checkWinner()){
+            panel.setMessage(panel.getMessage()+board.getCheckerColor()+ "won the game!");
+            panel.messageDisplayer();
+        }
     }
 
     private void fixEnabled(){

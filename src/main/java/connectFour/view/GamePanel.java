@@ -3,6 +3,8 @@ package connectFour.view;
 import connectFour.model.GameBoard;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,19 +18,27 @@ public class GamePanel extends JPanel implements Observer {
     private GameBoard board;
     public JLabel checkerLabel = null;
     private String option;
-    private static final int WIDTH = 66;
-    private static final int HEIGHT = 66;
-    private static final int X_ADJUSTMENT = 17;
-    private static final int Y_ADJUSTMENT = 8;
+    private static final int WIDTH = 75;
+    private static final int HEIGHT = 75;
+    private static final int X_ADJUSTMENT = 19;
+    private static final int Y_ADJUSTMENT = 19;
 
-    private String tips = ("Winner winner chicken dinner!");
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    private String message = ("Winner winner chicken dinner! ");
 
     public GamePanel(GameBoard board) {
         board.addObserver(this);
         this.board = board;
         setVisible(true);
         setOpaque(true);
-        setBackground(new Color(0,0,128));
+        //setBackground(new Color(0,0,128));
         board.printAll();
         board.boardRowChecker();
     }
@@ -41,7 +51,7 @@ public class GamePanel extends JPanel implements Observer {
 
     private void paintImage(Graphics g){
         BufferedImage texture = null;
-        String fileName = "production/production/connectFour/textures/Connect4Board.png";
+        String fileName = "production/production/connectFour/textures/connectBoard.png";
         try {
             File imgFile = new File(fileName);
             texture = ImageIO.read(imgFile);
@@ -64,10 +74,10 @@ public class GamePanel extends JPanel implements Observer {
             for (int j = 0; j < this.board.getBoardWidth(); j++) {
                 if (board[i][j] == 'X') {
                     option = "orange";
-                    g.drawImage( getPicture(),j*90 + X_ADJUSTMENT, i*80 + Y_ADJUSTMENT, WIDTH, HEIGHT,null);
+                    g.drawImage( getPicture(),j*100 + X_ADJUSTMENT, i*100 + Y_ADJUSTMENT, WIDTH, HEIGHT,null);
                 } else if (board[i][j] == 'O') {
                     option = "red";
-                    g.drawImage( getPicture(),j*90 + X_ADJUSTMENT, i*80 + Y_ADJUSTMENT, WIDTH, HEIGHT,null);
+                    g.drawImage( getPicture(),j*100 + X_ADJUSTMENT, i*100 + Y_ADJUSTMENT, WIDTH, HEIGHT,null);
                 }
                 /* Swapping the 2d board dimensions will greatly improve this method. You will be able to break when
                 * the top of a column has been reached, and the fillOval method will only need to be written once. */
@@ -100,9 +110,22 @@ public class GamePanel extends JPanel implements Observer {
          */
     }
 
-    public void checkWinner() {
-        if (board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDecendingDiagonalCheck()) {
-            JOptionPane.showMessageDialog(null, tips, "Game over", JOptionPane.INFORMATION_MESSAGE);
+    public boolean checkWinner() {
+        return board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDecendingDiagonalCheck();
+    }
+    public void messageDisplayer(){
+        JOptionPane.showMessageDialog(null, message, "Game over", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /* This function creates the sound for each button in our code*/
+    public void playMusic(){
+        File filepath = new File("production/production/connectFour/coinDrop.wav");
+        try {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(filepath));
+            clip.start();
+        } catch (Exception ioe){
+            System.err.println("Could not load " + filepath);
         }
     }
 
