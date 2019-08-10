@@ -29,15 +29,19 @@ public class ButtonOneAction extends AbstractAction implements Observer {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 1");
+
         times--;
         board.setBoard(0);
         board.printAll();
         board.endTurn();
         fixEnabled();
-        panel.playMusic();
+        panel.playMusic("coinDrop");
         if(panel.checkWinner()){
-            panel.setMessage(panel.getMessage()+board.getCheckerColor()+ "won the game!");
+            panel.setMessage(panel.getMessage()+board.getCheckerColor()+ " won the game!");
             panel.messageDisplayer();
+        }
+        if(times == 0){
+            board.drawChecker(1);
         }
     }
 

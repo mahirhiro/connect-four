@@ -30,15 +30,19 @@ public class ButtonSixAction extends AbstractAction implements Observer {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Column 6");
+
         times--;
         board.setBoard(5);
         board.printAll();
         board.endTurn();
         fixEnabled();
-        panel.playMusic();
+        panel.playMusic("coinDrop");
         if(panel.checkWinner()){
-            panel.setMessage(panel.getMessage()+board.getCheckerColor()+ "won the game!");
+            panel.setMessage(panel.getMessage()+board.getCheckerColor()+ " won the game!");
             panel.messageDisplayer();
+        }
+        if(times == 0){
+            board.drawChecker(1);
         }
     }
     private void fixEnabled(){

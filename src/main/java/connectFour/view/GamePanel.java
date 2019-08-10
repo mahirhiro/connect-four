@@ -22,6 +22,7 @@ public class GamePanel extends JPanel implements Observer {
     private static final int HEIGHT = 75;
     private static final int X_ADJUSTMENT = 19;
     private static final int Y_ADJUSTMENT = 19;
+    private Color color = Color.BLUE;
 
     public void setMessage(String message) {
         this.message = message;
@@ -66,6 +67,7 @@ public class GamePanel extends JPanel implements Observer {
         paintCheckers(g);
         //drawCenteredCircle(g);
         paintImage(g);
+        setBackground(board.getSbg());
     }
 
     private void paintCheckers(Graphics g) {
@@ -111,7 +113,14 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     public boolean checkWinner() {
-        return board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDecendingDiagonalCheck();
+        if(board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDecendingDiagonalCheck()){
+            System.out.println("NUM"+ board.getdrawChecker());
+            playMusic("winnerMusic");
+            return true;
+        } else if (board.getdrawChecker() == 7){
+            JOptionPane.showMessageDialog(null, "Its a draw", "Game over", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return false;
     }
     public void messageDisplayer(){
         JOptionPane.showMessageDialog(null, message, "Game over", JOptionPane.INFORMATION_MESSAGE);
@@ -119,8 +128,8 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     /* This function creates the sound for each button in our code*/
-    public void playMusic(){
-        File filepath = new File("production/production/connectFour/coinDrop.wav");
+    public void playMusic(String s){
+        File filepath = new File("production/production/connectFour/sound/",s+".wav");
         try {
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(filepath));
@@ -133,5 +142,12 @@ public class GamePanel extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         repaint();
+    }
+
+    public void displayInformation() {
+        JOptionPane.showMessageDialog(null, "To win Connect Four you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.", "Game over", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public Color askNewColor(){
+        return JColorChooser.showDialog(null,"Pick your color",color);
     }
 }

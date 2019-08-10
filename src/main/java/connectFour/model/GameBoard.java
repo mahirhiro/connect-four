@@ -9,6 +9,8 @@ public class GameBoard extends Observable implements Observer {
     private char[][] board = new char[BOARD_HEIGHT][BOARD_WIDTH];
     private static final int BOARD_HEIGHT = 6;
     private static final int BOARD_WIDTH = 7;
+    private int draw = 0;
+    private Color sbg;
 
     public GameBoard() {
         this.playerTurn = true; // Player begins by default... for now
@@ -78,6 +80,10 @@ public class GameBoard extends Observable implements Observer {
             return "Red";
         }
         return"Orange";
+    }
+
+    public void drawChecker(int i){
+        draw = draw + i;
     }
 
 
@@ -153,6 +159,19 @@ public class GameBoard extends Observable implements Observer {
     private void refresh() {
         setChanged();
         notifyObservers();
+    }
+
+    public int getdrawChecker() {
+        return draw;
+    }
+
+    public Color getSbg() {
+        return sbg;
+    }
+
+    public void setSbg(Color color){
+        this.sbg = color;
+        refresh();
     }
 }
 
