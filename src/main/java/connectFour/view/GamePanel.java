@@ -113,16 +113,17 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     public boolean checkWinner() {
-        if(board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDecendingDiagonalCheck()){
-            System.out.println("NUM"+ board.getdrawChecker());
+        if(board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDescendingDiagonalCheck()){
+            System.out.println("NUM"+ board.drawChecker());
             playMusic("winnerMusic");
             return true;
-        } else if (board.getdrawChecker() == 7){
-            JOptionPane.showMessageDialog(null, "Its a draw", "Game over", JOptionPane.INFORMATION_MESSAGE);
+        } else if (board.drawChecker() == 7){
+            message = "Its a draw";
+            messageDisplay();
         }
         return false;
     }
-    public void messageDisplayer(){
+    public void messageDisplay(){
         JOptionPane.showMessageDialog(null, message, "Game over", JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }

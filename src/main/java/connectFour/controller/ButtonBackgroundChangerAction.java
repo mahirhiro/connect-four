@@ -13,7 +13,6 @@ public class ButtonBackgroundChangerAction extends AbstractAction implements Obs
 
     private GameBoard board;
     private GamePanel panel;
-    private Color color;
 
     public ButtonBackgroundChangerAction(GameBoard board, GamePanel panel) {
         super("Change Background Color");
@@ -28,7 +27,7 @@ public class ButtonBackgroundChangerAction extends AbstractAction implements Obs
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Changing background color");
-        color = panel.askNewColor();
+        Color color = panel.askNewColor();
         board.setSbg(color);
     }
 

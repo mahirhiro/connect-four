@@ -1,6 +1,5 @@
 package connectFour.view;
 
-import connectFour.model.Checker;
 import connectFour.model.GameBoard;
 import connectFour.view.buttons.*;
 

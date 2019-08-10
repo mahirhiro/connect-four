@@ -39,7 +39,7 @@ public class ButtonSixAction extends AbstractAction implements Observer {
         panel.playMusic("coinDrop");
         if(panel.checkWinner()){
             panel.setMessage(panel.getMessage()+board.getCheckerColor()+ " won the game!");
-            panel.messageDisplayer();
+            panel.messageDisplay();
         }
         if(times == 0){
             board.drawChecker(1);

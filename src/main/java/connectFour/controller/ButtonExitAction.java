@@ -1,8 +1,5 @@
 package connectFour.controller;
 
-import connectFour.model.GameBoard;
-import connectFour.view.GamePanel;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Observable;

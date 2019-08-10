@@ -1,9 +1,6 @@
 package connectFour.view.buttons;
 
 import connectFour.controller.ButtonExitAction;
-import connectFour.controller.ButtonFiveAction;
-import connectFour.model.GameBoard;
-import connectFour.view.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;

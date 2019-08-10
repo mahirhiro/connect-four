@@ -2,7 +2,7 @@ package connectFour.model;
 
 import java.awt.*;
 
-public class Checker extends Rectangle {
+class Checker extends Rectangle {
 
     private static int DEFAULT_X = 16;
     private static int DEFAULT_Y = 450;
@@ -11,7 +11,7 @@ public class Checker extends Rectangle {
     private static int shift_x = 0;
     private static int shift_y = 0;
 
-    public Checker(int x, int y, int width, int height) {
+    private Checker(int x, int y, int width, int height) {
         super(x,y,width,height);
         this.x = x;
         this.y = y;

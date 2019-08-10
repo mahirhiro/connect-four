@@ -1,8 +1,6 @@
 package connectFour.view.buttons;
 
 import connectFour.controller.ButtonBackgroundChangerAction;
-import connectFour.controller.ButtonExitAction;
-import connectFour.controller.ButtonFiveAction;
 import connectFour.model.GameBoard;
 import connectFour.view.GamePanel;
 
