@@ -12,7 +12,7 @@ public class ButtonColumnSix extends JMenuItem {
         setPreferredSize(new Dimension(110, 27));
         setVerticalTextPosition(AbstractButton.CENTER);
         setHorizontalTextPosition(AbstractButton.CENTER);
-        setToolTipText("Add a vertex");
+        setToolTipText("Column 6");
     }
 
     public ButtonColumnSix(GameBoard board, GamePanel panel){
