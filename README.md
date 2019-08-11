@@ -22,7 +22,7 @@ This was my third personal project which was intented to be a fun little throwba
 1. Go to where to want to save the file on your computer with your terminal
 2. Type git clone https://github.com/mahirhiro/connectFour.git
 3. With your IDE open the pom.xml file as a project
-4. Simply right click on the java sources folder ("java" under src/) and select Mark Directory As > Sources Root (see screenshot below)
+4. Simply right click on the java sources folder ("java" under src/main/) and select Mark Directory As > Sources Root (see screenshot below)
 <img width="350" alt="blank" src="https://user-images.githubusercontent.com/49659324/61996989-f6525d80-b0ab-11e9-8d42-d6e56ac5e32c.png">
 5. Click run & enjoy! 😉
 
