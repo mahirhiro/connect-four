@@ -114,7 +114,6 @@ public class GamePanel extends JPanel implements Observer {
 
     public boolean checkWinner() {
         if(board.boardRowChecker() || board.boardColumnChecker() || board.boardAscendingDiagonalCheck() || board.boardDescendingDiagonalCheck()){
-            System.out.println("NUM"+ board.drawChecker());
             playMusic("winnerMusic");
             return true;
         } else if (board.drawChecker() == 7){
@@ -146,7 +145,7 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     public void displayInformation() {
-        JOptionPane.showMessageDialog(null, "To win Connect Four you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.", "Game over", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "To win Connect Four you must be the first player to get four of your colored checkers \n in a row either horizontally, vertically or diagonally.", "Tip", JOptionPane.INFORMATION_MESSAGE);
     }
     public Color askNewColor(){
         return JColorChooser.showDialog(null,"Pick your color",color);
