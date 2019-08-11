@@ -1,4 +1,4 @@
- # Connect-four <img align="left" width="50" alt="connect4 logo" src="https://user-images.githubusercontent.com/49659324/62815678-f8490180-bb2c-11e9-8254-ee270ef30a23.png">
+ # Connect-four <img align="left" width="50" alt="connect4 logo" src="https://user-images.githubusercontent.com/49659324/62815678-f8490180-bb2c-11e9-8254-ee270ef30a23.png"> [![Build Status](https://travis-ci.com/mahirhiro/connectFour.svg?branch=master)](https://travis-ci.com/mahirhiro/connectFour)
  
  ## Table of contents
 * [General info](#general-info)
