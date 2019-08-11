@@ -14,7 +14,9 @@
 This was my third personal project which was intented to be a fun little throwback game, being connect 4. I made this project with my friend [Damian](https://github.com/theejazz)
 	
 ## Screenshots
+width="422" alt="connect 4 gif" src="https://user-images.githubusercontent.com/49659324/62828206-3a3b7b80-bbf1-11e9-85b6-e4f8c84358d9.gif"> <img width="422" alt="Screen Shot 2019-08-11 at 4 26 09 AM" src="https://user-images.githubusercontent.com/49659324/62828157-4c68ea00-bbf0-11e9-8dfd-828e646fa021.png">
 
+<img width="424" alt="Screen Shot 2019-08-11 at 4 27 49 AM" src="https://user-images.githubusercontent.com/49659324/62828162-65719b00-bbf0-11e9-8ba8-ed0b50a01f50.png"> <img width="423" alt="Screen Shot 2019-08-11 at 4 25 45 AM" src="https://user-images.githubusercontent.com/49659324/62828158-4ecb4400-bbf0-11e9-84cb-37f19def1f9f.png">
 
 ## How to run it?
 1. Go to where to want to save the file on your computer with your terminal
