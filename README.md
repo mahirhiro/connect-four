@@ -34,7 +34,7 @@ This was my third personal project which was intented to be a fun little throwba
 * Cool and smooth UI with vibrant colors
 
 ## Status
-Project is: **In process**
+Project is: **Completed**
 
 ## Contributing
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits.
